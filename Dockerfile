@@ -1,4 +1,4 @@
-FROM cloudflare/cloudflared:latest
+FROM cloudflare/cloudflared
 
 COPY ./dns_updater /usr/src/app/dns
 
