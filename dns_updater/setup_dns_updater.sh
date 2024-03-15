@@ -8,10 +8,10 @@ fi
 
 # Set up the canned.data file
 echo "Creating canned.data file..."
-echo "zone_id=$ZONE_ID" > canned.data
-echo "api_token=$API_TOKEN" >> canned.data
-echo "dns_list=$DNS_RECORD_ID" >> canned.data
-echo "extra_command='$EXTRA_COMMAND'" >> canned.data
+echo "zone_id=$ZONE_ID" > ./dns/canned.data
+echo "api_token=$API_TOKEN" >> ./dns/canned.data
+echo "dns_list=$DNS_RECORD_ID" >> ./dns/canned.data
+echo "extra_command='$EXTRA_COMMAND'" >> ./dns/canned.data
 
 # Add main script to crontab
 echo "Configuring crontab for dns updater"
