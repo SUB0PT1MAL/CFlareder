@@ -26,7 +26,7 @@ Required Environment Variables
 
 - `DNS_LIST`: A comma-separated list of domain names and their corresponding DNS record IDs in the format `"domain1:dns_record_id1,domain2:dns_record_id2,..."`. For example: `"example.com:abc123,example.net:def456"`.
 
-- `token`: Your CloudFlare tunnel token.
+- `token`: Your CloudFlared Tunnel Token.
 
 Optional Environment Variable
 ----------------------------
