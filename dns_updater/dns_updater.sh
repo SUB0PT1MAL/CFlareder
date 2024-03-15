@@ -14,7 +14,6 @@ if [ "$current_ip" != "$(cat /usr/src/app/dns/fresh.data)" ]; then
         domain_name=$(echo "$dns_entry" | cut -d':' -f1)
         dns_record_id=$(echo "$dns_entry" | cut -d':' -f2)
         # Update the DNS record for the current domain
-        echo $api_token
         curl --request PATCH \
             --url "https://api.cloudflare.com/client/v4/zones/$zone_id/dns_records/$dns_record_id" \
             --header "Content-Type: application/json" \
