@@ -7,15 +7,22 @@ if [ -z "$ZONE_ID" ] || [ -z "$API_TOKEN" ] || [ -z "$DNS_RECORD_ID" ]; then
 fi
 
 # Set up the canned.data file
+echo "Creating canned.data file..."
 echo "zone_id=$ZONE_ID" > canned.data
 echo "api_token=$API_TOKEN" >> canned.data
 echo "dns_list=$DNS_RECORD_ID" >> canned.data
 echo "extra_command='$EXTRA_COMMAND'" >> canned.data
 
 # Add main script to crontab
+echo "Configuring crontab for dns updater"
 crontab -l | { cat; echo "*/5 * * * * /usr/src/app/dns/dns_updater.sh"; } | crontab -
 
-# Start CloudFlared
+# First DNS update forced run
+echo "Getting DNS up to date..."
+./dns/dns_updater.sh
+
 echo "DNS updater setup completed."
+
+# Start CloudFlared
 echo "Starting CloudFlared Tunnel..."
 ./cloudflared.sh
