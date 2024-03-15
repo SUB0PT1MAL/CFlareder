@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:latest
 
 WORKDIR /usr/src/app
 
@@ -12,7 +12,7 @@ RUN url=$(curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/l
 COPY cloudflared.sh ./cloudflared.sh
 RUN chmod +x ./cloudflared.sh
 
-COPY ./dns_updater/ ./dns/
-RUN chmod -R +x ./dns/
+COPY ./dns_updater ./dns
+RUN chmod -R +x ./dns
 
 ENTRYPOINT ["/bin/sh", "-c" , "./dns/setup_dns_updater.sh && ./cloudflared.sh"]
