@@ -16,4 +16,4 @@ echo "extra_command='$EXTRA_COMMAND'" >> canned.data
 crontab -l | { cat; echo "*/5 * * * * /usr/src/app/dns/dns_updater.sh"; } | crontab -
 
 # Start CloudFlared
-/bin/sh ../cloudflared.sh
+../cloudflared.sh
