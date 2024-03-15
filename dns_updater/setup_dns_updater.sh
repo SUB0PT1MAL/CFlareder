@@ -1,4 +1,4 @@
-#!/bin/shell
+#!/bin/sh
 
 # Check if required variables exist
 if [ -z "$ZONE_ID" ] || [ -z "$API_TOKEN" ] || [ -z "$DNS_LIST" ]; then

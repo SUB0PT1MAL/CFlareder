@@ -1,4 +1,4 @@
-#!/bin/shell
+#!/bin/sh
 
 # Get current public IP
 current_ip=$(curl -s ifconfig.me)
