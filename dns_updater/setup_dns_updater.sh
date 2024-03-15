@@ -1,6 +1,6 @@
 #!/bin/shell
 
-# Check if required variables are set
+# Check if required variables exist
 if [ -z "$ZONE_ID" ] || [ -z "$API_TOKEN" ] || [ -z "$DNS_LIST" ]; then
     echo "Error: ZONE_ID, API_TOKEN, and DNS_LIST environment variables must be set."
     exit 1
