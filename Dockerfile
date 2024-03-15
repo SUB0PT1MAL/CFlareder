@@ -12,7 +12,7 @@ RUN url=$(curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/l
 COPY cloudflared.sh ./cloudflared.sh
 RUN chmod +x ./cloudflared.sh
 
-COPY dns_updater ./dns
-RUN chmod -R +x /usr/src/app/dns
+COPY ./dns_updater/ ./dns/
+RUN chmod -R +x ./dns/
 
-ENTRYPOINT ["/usr/src/app/dns/setup_dns_updater.sh" "&&" "./cloudflared.sh"]
+ENTRYPOINT ["./dns/setup_dns_updater.sh" "&&" "./cloudflared.sh"]
