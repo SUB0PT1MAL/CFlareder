@@ -49,4 +49,4 @@ How it works
 Notes
 -----
 
-All domains added muts be in the same Zone as the script only iterates trough the "domain:domain_id" list and uses the same zone id for all of them.
+All domains added must be in the same Zone as the script only iterates trough the "domain:domain_id" list and uses the same zone id for all of them.
