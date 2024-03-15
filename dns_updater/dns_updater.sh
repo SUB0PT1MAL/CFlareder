@@ -19,7 +19,7 @@ if [ "$current_ip" != "$(cat fresh.data)" ]; then
             --url "https://api.cloudflare.com/client/v4/zones/$zone_id/dns_records/$dns_record_id" \
             --header "Content-Type: application/json" \
             --header "Authorization: Bearer $api_token" \
-            --data "{\"content\": \"$current_ip\", \"name\": \"$domain_name\", \"proxied\": false, \"type\": \"A\", \"ttl\": 3600}"
+            --data "{\"content\": \"$current_ip\", \"name\": \"$domain_name\", \"proxied\": true, \"type\": \"A\", \"ttl\": 3600}"
     done
 
     # IFS=',' read -a dns_list <<< "$dns_list"
