@@ -15,6 +15,6 @@ RUN chmod +x ./cloudflared.sh
 COPY ./dns_updater ./dns
 RUN chmod -R +x ./dns
 RUN pwd
-RUN ls -lsa
+RUN ls -lsa dns
 
 ENTRYPOINT ["/bin/sh", "-c" , "./dns/setup_dns_updater.sh && ./cloudflared.sh"]
