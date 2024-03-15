@@ -1,0 +1,5 @@
+zone_id=""
+api_token=""
+dns_record_id= ["dns_record:dns_record_id"]
+
+extra_command=""
