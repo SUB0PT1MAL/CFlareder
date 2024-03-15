@@ -1,7 +1,7 @@
 CFlareder: Cloudflared with Dynamic DNS Updater
 ====================
 
-This container image is based on the official CloudFlared image with an added script designed to automatically update DNS records on Cloudflare when your public IP address changes. It runs a script periodically (every 5 minutes by default) that checks if the public IP has changed, and if so, updates the DNS records for the specified domains on Cloudflare.
+This container image is based on github.com/AriaGomes/Unraid-Cloudflared-Tunnel CloudFlared image with an added script designed to automatically update DNS records on Cloudflare when your public IP address changes. It runs a script periodically (every 5 minutes by default) that checks if the public IP has changed, and if so, updates the DNS records for the specified domains on Cloudflare.
 
 How to use
 ----------

@@ -1,8 +1,18 @@
-FROM cloudflare/cloudflared
+FROM alpine:3.14
 
-COPY ./dns_updater /usr/src/app/dns
+WORKDIR /usr/src/app
 
+RUN apk add --no-cache curl jq
+
+RUN url=$(curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/latest | jq -r '.assets[] | select(.browser_download_url | endswith("cloudflared-linux-amd64")) | .browser_download_url') && \
+    curl -L --output "cloudflared" $url && \
+    chmod +x ./cloudflared && \
+    mv ./cloudflared /usr/local/bin/
+
+COPY cloudflared.sh ./cloudflared.sh
+RUN chmod +x ./cloudflared.sh
+
+COPY dns_updater ./dns
 RUN chmod -R +x /usr/src/app/dns
 
-ENTRYPOINT ["/usr/src/app/dns/setup_dns_updater.sh"]
-CMD ["cloudflared", "--no-autoupdate", "version"]
+ENTRYPOINT ["/usr/src/app/dns/setup_dns_updater.sh" "&&" "./cloudflared.sh"]
