@@ -9,7 +9,8 @@ source canned.data
 # Check if IP changed
 if [ "$current_ip" != "$(cat fresh.data)" ]; then
     # Iterate through the list of domains
-    IFS=',' read -ra dns_list <<< "$dns_list"
+    #IFS=',' read -ra dns_list <<< "$dns_list"
+    IFS=',' read -ra dns_list < <(echo "$dns_list")
     for dns_entry in "${dns_list[@]}"; do
         domain_name=$(echo "$dns_entry" | cut -d':' -f1)
         dns_record_id=$(echo "$dns_entry" | cut -d':' -f2)
