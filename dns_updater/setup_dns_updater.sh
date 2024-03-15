@@ -15,4 +15,4 @@ echo "extra_command='$EXTRA_COMMAND'" >> canned.data
 # Add main script to crontab
 crontab -l | { cat; echo "*/5 * * * * /usr/src/app/dns/dns_updater.sh"; } | crontab -
 
-echo "Setup completed successfully!"
+/bin/sh ../cloudflared.sh
