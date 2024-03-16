@@ -16,6 +16,7 @@ echo "extra_command='$EXTRA_COMMAND'" >> ./dns/canned.data
 # Add main script to crontab
 echo "Configuring crontab for dns updater"
 crontab -l | { cat; echo "*/5 * * * * /usr/src/app/dns/dns_updater.sh"; } | crontab -
+crond
 
 # First DNS update forced run
 echo "Getting DNS up to date..."
