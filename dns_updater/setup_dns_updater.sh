@@ -20,7 +20,7 @@ crond
 
 # First DNS update forced run
 echo "Getting DNS up to date..."
-./dns/dns_updater.sh
+/usr/src/app/dns/dns_updater.sh
 
 echo "DNS updater setup completed."
 
