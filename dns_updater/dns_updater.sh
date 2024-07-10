@@ -23,11 +23,6 @@ if [ "$current_ip" != "$previous_ip" ]; then
     done
     
     # Execute extra command
-	# Replace the placeholders in the command
-	updated_command="${EXTRA_COMMAND//\($old_ip\)/$previous_ip}"
-	updated_command="${updated_command//\($new_ip\)/$current_ip}"
-
-	# Execute the updated command
 	eval "$updated_command"
     
 	# Update the fresh.data file with the new IP
