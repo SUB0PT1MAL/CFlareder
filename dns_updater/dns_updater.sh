@@ -22,7 +22,10 @@ if [ "$current_ip" != "$previous_ip" ]; then
             --data "{\"content\": \"$current_ip\", \"name\": \"$domain_name\", \"proxied\": true, \"type\": \"A\", \"ttl\": 3600}"
     done
     
-    # Execute extra command
+	# Replace the placeholders in the extra command
+	updated_command="${extra_command//\($old_ip\)/$previous_ip}"
+	updated_command="${updated_command//\($new_ip\)/$current_ip}"
+	# Execute extra command
 	eval "$updated_command"
     
 	# Update the fresh.data file with the new IP
