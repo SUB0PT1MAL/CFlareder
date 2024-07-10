@@ -2,12 +2,13 @@
 
 # Get current public IP
 current_ip=$(curl -s ifconfig.me)
+previous_ip=$(cat /usr/src/app/dns/fresh.data)
 
 # Read variables from file
 source /usr/src/app/dns/canned.data
 
 # Check if IP changed
-if [ "$current_ip" != "$(cat /usr/src/app/dns/fresh.data)" ]; then
+if [ "$current_ip" != "$previous_ip" ]; then
     # Iterate through the list of domains
     IFS=',' # Set the Internal Field Separator to comma
     for dns_entry in $dns_list; do
@@ -22,8 +23,19 @@ if [ "$current_ip" != "$(cat /usr/src/app/dns/fresh.data)" ]; then
     done
     
     # Execute extra command
-    eval "$extra_command"
 
-    # Update the fresh.data file with the new IP
+	# Replace the placeholders in the command
+	updated_command="${EXTRA_COMMAND//\($old_ip\)/$previous_ip}"
+	updated_command="${updated_command//\($new_ip\)/$current_ip}"
+
+	# Log the command (optional, remove in production if sensitive)
+	echo "Executing command: $updated_command"
+
+	# Execute the updated command
+	eval "$updated_command"
+	#eval "$extra_command"
+    
+	# Update the fresh.data file with the new IP
     echo "$current_ip" > /usr/src/app/dns/fresh.data
 fi
+
