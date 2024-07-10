@@ -33,7 +33,6 @@ if [ "$current_ip" != "$previous_ip" ]; then
 
 	# Execute the updated command
 	eval "$updated_command"
-	#eval "$extra_command"
     
 	# Update the fresh.data file with the new IP
     echo "$current_ip" > /usr/src/app/dns/fresh.data
