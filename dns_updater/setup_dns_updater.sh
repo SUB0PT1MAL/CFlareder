@@ -20,7 +20,7 @@ crond
 
 # First DNS update forced
 echo "Getting DNS up to date..."
-# Get current IP and save it
+# Get current IP
 current_ip=$(curl -s ifconfig.me)
 echo "$current_ip" > /usr/src/app/dns/fresh.data
 # Iterate through the list of domains
