@@ -44,4 +44,4 @@ echo "DNS updater setup completed."
 echo "Starting CloudFlared Tunnel..."
 ./cloudflared.sh
 
-#test
+#tes
