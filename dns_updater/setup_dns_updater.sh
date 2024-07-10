@@ -23,6 +23,8 @@ echo "Getting DNS up to date..."
 # Get current IP
 current_ip=$(curl -s ifconfig.me)
 echo "$current_ip" > /usr/src/app/dns/fresh.data
+
+source /usr/src/app/dns/canned.data
 # Iterate through the list of domains
 IFS=',' # Set the Internal Field Separator to comma
 for dns_entry in $dns_list; do
