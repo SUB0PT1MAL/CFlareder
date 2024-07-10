@@ -11,7 +11,10 @@ echo "Creating canned.data file..."
 echo "zone_id=$ZONE_ID" > ./dns/canned.data
 echo "api_token=$API_TOKEN" >> ./dns/canned.data
 echo "dns_list=$DNS_RECORD_ID" >> ./dns/canned.data
-echo "extra_command='$EXTRA_COMMAND'" >> ./dns/canned.data
+# Replace the placeholders in the extra command
+updated_command="${EXTRA_COMMAND//\($old_ip\)/$previous_ip}"
+updated_command="${updated_command//\($new_ip\)/$current_ip}"
+echo "updated_command=$updated_command" >> ./dns/canned.data
 
 # Add DNS updater script to crontab
 echo "Configuring crontab for dns updater"
