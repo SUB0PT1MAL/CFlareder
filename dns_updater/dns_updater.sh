@@ -23,13 +23,9 @@ if [ "$current_ip" != "$previous_ip" ]; then
     done
     
     # Execute extra command
-
 	# Replace the placeholders in the command
 	updated_command="${EXTRA_COMMAND//\($old_ip\)/$previous_ip}"
 	updated_command="${updated_command//\($new_ip\)/$current_ip}"
-
-	# Log the command (optional, remove in production if sensitive)
-	echo "Executing command: $updated_command"
 
 	# Execute the updated command
 	eval "$updated_command"
