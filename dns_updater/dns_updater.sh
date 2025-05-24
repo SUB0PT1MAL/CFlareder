@@ -3,6 +3,7 @@ MAX_RETRIES=3
 TIMEOUT=5
 
 get_ip() {
+    echo "Getting current IP."
     local retry_count=0
     local ip=""
     
